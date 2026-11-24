@@ -4,256 +4,313 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Маленькое кино про тебя. Включи звук и листай.">
+<meta name="description" content="Для тебя есть письмо. Включи звук и открой конверт.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Для Жанель">
-<meta property="og:description" content="Маленькое кино про тебя. Включи звук и листай.">
+<meta property="og:title" content="Для Динары">
+<meta property="og:description" content="Для тебя есть письмо. Включи звук и открой конверт.">
 <meta property="og:url" content="https://ruxxl.github.io/for-you-zhanel/">
 <meta property="og:image" content="https://ruxxl.github.io/for-you-zhanel/img/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://ruxxl.github.io/for-you-zhanel/img/og.jpg">
-<title>Для Жанель</title>
+<title>Для Динары</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;800&family=Manrope:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Pinyon+Script&family=Manrope:wght@400;600&display=swap">
 <script>document.documentElement.classList.add("js");</script>
 <style>
-/* Layout: a scroll-story in four chapters (meeting, her eyes, her stories, the invitation) over a night sky of drifting hearts. */
+/* Layout: sound check -> ready screen -> sealed envelope -> letter with photos and verses -> date invitation. */
 :root {
-  --ground: #0b0708;
-  --ground-2: #150d0f;
-  --line: #2b1a1d;
-  --ink: #f5ece6;
-  --ink-soft: #b9a9a3;
-  --red: #ff3b30;
-  --red-deep: #8f1d1a;
-  --gold: #f2b441;
-  --paper: #f3ede6;
-  --paper-ink: #2a1d1b;
-  --font-display: "Syne", "Arial Black", system-ui, sans-serif;
-  --font-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mx: 50%;
-  --my: 20%;
+  --night: #12080b;
+  --wine: #3a0f1a;
+  --wine-2: #5a1626;
+  --rose: #e8a0a8;
+  --gold: #e6c38a;
+  --paper: #f7efe4;
+  --paper-2: #efe2d0;
+  --ink: #3b2226;
+  --ink-soft: #7a5a5e;
+  --seal: #a11d33;
+  --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --script: "Pinyon Script", "Snell Roundhand", cursive;
+  --sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: clip; max-width: 100%; }
+html { overflow-x: clip; max-width: 100%; scroll-behavior: smooth; }
 body {
-  margin: 0;
-  background: var(--ground);
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.6;
+  margin: 0; max-width: 100%; overflow-x: clip;
+  background: radial-gradient(120% 80% at 50% 0%, var(--wine-2), var(--night) 70%) fixed;
+  color: #f6e9e6; font-family: var(--sans); font-size: 17px; line-height: 1.6;
   padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px));
-  padding-block: 0 64px;
-  overflow-x: clip;
-  max-width: 100%;
 }
-body::before {
-  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
-  background: radial-gradient(540px circle at var(--mx) var(--my), rgba(255, 59, 48, 0.17), transparent 70%);
-}
+body.locked { overflow: hidden; height: 100svh; }
 #fx { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-.wrap { position: relative; z-index: 1; max-width: 980px; margin: 0 auto; overflow-x: clip; }
-
-.eyebrow { font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin: 0 0 16px; }
-h1, h2 { font-family: var(--font-display); text-wrap: balance; }
-h1 { font-weight: 800; font-size: clamp(42px, 11vw, 88px); line-height: 1; letter-spacing: -0.02em; margin: 0 0 20px; min-height: 1.1em; }
-h2 { font-weight: 800; font-size: clamp(30px, 7vw, 56px); line-height: 1.05; letter-spacing: -0.015em; margin: 0 0 20px; }
-em { font-style: normal; background: linear-gradient(100deg, var(--gold), var(--red) 75%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-p { margin: 0 0 16px; max-width: 60ch; }
-.chapter { padding-block: 90px 40px; text-align: center; display: flex; flex-direction: column; align-items: center; }
-.chapter p { margin-inline: auto; }
-
-/* ---------- hero ---------- */
-.hero { min-height: 100svh; padding-block: 56px 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-.ring { position: relative; width: min(62vw, 270px); aspect-ratio: 1; margin-bottom: 34px; }
-.ring::before, .ring::after {
-  content: ""; position: absolute; inset: -6px; border-radius: 50%;
-  background: conic-gradient(var(--red), var(--gold), var(--red-deep), var(--red));
-  animation: spin 7s linear infinite;
+button { font: inherit; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 12px 30px;
+  border-radius: 999px; border: 1px solid transparent; cursor: pointer; text-decoration: none;
+  font-weight: 600; font-size: 16px; letter-spacing: 0.02em; transition: transform .15s, filter .15s, border-color .15s;
 }
-.ring::after { filter: blur(22px); opacity: 0.65; }
-.ring img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; border: 4px solid var(--ground); }
-.sub { font-size: 19px; color: var(--ink-soft); }
-.scroll { margin-top: 30px; color: var(--gold); text-decoration: none; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; display: inline-flex; flex-direction: column; align-items: center; gap: 10px; }
-.scroll::after { content: ""; width: 1px; height: 38px; background: linear-gradient(var(--gold), transparent); animation: drip 1.8s ease-in-out infinite; }
-.typing::after { content: "|"; color: var(--gold); margin-left: 4px; animation: blink 0.8s steps(1) infinite; }
+.btn:active { transform: scale(0.96); }
+.btn:focus-visible, .chip:focus-visible, .env:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+.btn.primary { background: linear-gradient(135deg, #f0cf9a, #d9a35f); color: #35180f; box-shadow: 0 8px 30px rgba(230, 195, 138, 0.25); }
+.btn.primary:hover { filter: brightness(1.06); }
+.btn.quiet { background: transparent; color: #f6e9e6; border-color: rgba(246, 233, 230, 0.35); }
+.btn.quiet:hover { border-color: var(--gold); }
 
-/* ---------- eyes ---------- */
-.eye-photo { position: relative; width: min(100%, 420px); margin: 0 0 40px; border-radius: 22px; overflow: hidden; animation: glow 3.6s ease-in-out infinite; }
-.eye-photo img { display: block; width: 100%; height: auto; }
-.eye-photo::after {
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, 0.3) 50%, transparent 62%);
-  transform: translateX(-130%); animation: sweep 4.8s ease-in-out infinite;
+/* ---------- steps (sound check, ready) ---------- */
+.step {
+  position: fixed; inset: 0; z-index: 30; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; text-align: center;
+  padding: 24px max(20px, env(safe-area-inset-right, 0px)) 24px max(20px, env(safe-area-inset-left, 0px));
+  background: radial-gradient(100% 70% at 50% 30%, var(--wine-2), var(--night) 78%);
+  opacity: 0; visibility: hidden; transition: opacity .7s, visibility .7s;
 }
-.song { position: relative; margin-top: 34px; padding: 34px 28px; min-width: min(100%, 340px); }
-.song .t { position: relative; z-index: 1; font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 7vw, 46px); line-height: 1.05; margin: 0 0 6px; }
-.song .by { position: relative; z-index: 1; margin: 0; color: var(--gold); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; }
-.song i { position: absolute; left: 50%; top: 50%; width: 80%; aspect-ratio: 1; border-radius: 50%; border: 1px solid var(--red); opacity: 0; translate: -50% -50%; animation: pulse 3.6s ease-out infinite; }
-.song i:nth-child(2) { animation-delay: 1.2s; }
-.song i:nth-child(3) { animation-delay: 2.4s; }
+.step.on { opacity: 1; visibility: visible; }
+.step h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(34px, 9vw, 54px); line-height: 1.05; margin: 0; }
+.step p { margin: 0; color: #cdb3b3; max-width: 34ch; }
+.step .row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.step .hint { color: var(--gold); min-height: 1.6em; font-size: 15px; }
+.eq { display: flex; align-items: flex-end; gap: 6px; height: 54px; margin: 6px 0; }
+.eq i { width: 7px; height: 8px; border-radius: 4px; background: linear-gradient(var(--gold), var(--rose)); opacity: .5; transition: height .2s; }
+.eq.live i { opacity: 1; animation: bar 0.9s ease-in-out infinite; }
+.eq i:nth-child(2) { animation-delay: .12s; } .eq i:nth-child(3) { animation-delay: .28s; }
+.eq i:nth-child(4) { animation-delay: .05s; } .eq i:nth-child(5) { animation-delay: .35s; } .eq i:nth-child(6) { animation-delay: .2s; } .eq i:nth-child(7) { animation-delay: .4s; }
+@keyframes bar { 0%, 100% { height: 8px; } 50% { height: 54px; } }
+.script { font-family: var(--script); color: var(--gold); font-size: clamp(30px, 8vw, 44px); line-height: 1.1; }
 
-/* ---------- stories ---------- */
-.reel { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px 22px; width: 100%; margin: 28px 0 60px; padding-inline: 8px; }
-@media (max-width: 700px) { .reel { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 12px; padding-inline: 0; } }
-.polaroid { margin: 0; background: var(--paper); color: var(--paper-ink); padding: 10px 10px 14px; border-radius: 4px; rotate: var(--r, 0deg); box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55); min-width: 0; transition: rotate 0.35s, scale 0.35s; }
-.polaroid:hover { rotate: 0deg; scale: 1.04; }
-.polaroid img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 2px; }
-.polaroid figcaption { font-size: 13px; font-weight: 600; margin-top: 10px; line-height: 1.3; }
-.reel .polaroid:nth-child(3n+2) { margin-top: 30px; }
-@media (max-width: 700px) { .reel .polaroid:nth-child(3n+2) { margin-top: 0; } .reel .polaroid:nth-child(even) { margin-top: 24px; } }
+/* ---------- envelope ---------- */
+.stage {
+  position: fixed; inset: 0; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px;
+  opacity: 0; visibility: hidden; transition: opacity 1s, visibility 1s;
+}
+.stage.on { opacity: 1; visibility: visible; }
+.stage.gone { opacity: 0; visibility: hidden; transition: opacity .9s, visibility .9s; }
+.env { position: relative; width: min(86vw, 400px); aspect-ratio: 1.45; border: 0; padding: 0; background: none; cursor: pointer; perspective: 900px; animation: float 4.5s ease-in-out infinite; -webkit-tap-highlight-color: transparent; }
+.env .back, .env .front, .env .flap, .env .note { position: absolute; left: 0; right: 0; }
+.env .back { inset: 0; background: #b32b44; border-radius: 6px; box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55); }
+.env .note { left: 6%; right: 6%; top: 8%; height: 84%; background: var(--paper); border-radius: 4px; transition: transform 1s .5s cubic-bezier(.3,.7,.2,1); z-index: 1; box-shadow: 0 2px 10px rgba(0,0,0,.2);
+  display: flex; align-items: center; justify-content: center; font-family: var(--script); font-size: clamp(24px, 6vw, 32px); color: var(--seal); }
+.env .front { inset: 0; z-index: 2; border-radius: 6px; pointer-events: none;
+  background: linear-gradient(to top right, transparent 49.5%, #9d2038 50%) 0 0 / 50.5% 100% no-repeat, linear-gradient(to top left, transparent 49.5%, #a82640 50%) 100% 0 / 50.5% 100% no-repeat, linear-gradient(#c23350, #b32b44) bottom / 100% 55% no-repeat; clip-path: polygon(0 0, 50% 52%, 100% 0, 100% 100%, 0 100%); }
+.env .front::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, #c43a55 0 50%, #ad2842 50%); clip-path: polygon(0 0, 50% 52%, 100% 0, 100% 100%, 0 100%); }
+.env .flap { top: 0; height: 56%; z-index: 3; background: linear-gradient(#cc3a57, #b02943); transform-origin: top; clip-path: polygon(0 0, 100% 0, 50% 100%); transition: transform .8s cubic-bezier(.4,.1,.3,1), z-index 0s .4s; pointer-events: none; }
+.env .seal { position: absolute; left: 50%; top: 48%; z-index: 4; width: 17%; aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #d8394f, var(--seal) 70%); box-shadow: 0 6px 16px rgba(0, 0, 0, .45), inset 0 -3px 6px rgba(0,0,0,.25); display: grid; place-items: center; transition: opacity .4s, scale .4s; animation: beat 1.6s ease-in-out infinite; }
+.env .seal svg { width: 52%; fill: #ffd9d9; }
+.env.open { animation: none; }
+.env.open .flap { transform: rotateX(180deg); z-index: 0; }
+.env.open .seal { opacity: 0; scale: .4; }
+.env.open .note { transform: translateY(-62%); z-index: 1; }
+.tap { margin: 0; color: var(--gold); font-size: 13px; letter-spacing: .22em; text-transform: uppercase; animation: blink 2s ease-in-out infinite; }
+.to { font-family: var(--script); font-size: clamp(32px, 9vw, 48px); color: var(--gold); margin: 0; line-height: 1; }
+@keyframes float { 0%, 100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-10px) rotate(1deg); } }
+@keyframes beat { 0%, 100% { transform: scale(1); } 15% { transform: scale(1.14); } 30% { transform: scale(1); } 45% { transform: scale(1.08); } }
+@keyframes blink { 50% { opacity: .35; } }
 
-.lines { position: relative; width: 100%; padding-block: 56px; display: flex; flex-direction: column; gap: 34px; align-items: center; isolation: isolate; }
-.lines::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(var(--ground), rgba(11, 7, 8, 0.7) 20%, rgba(11, 7, 8, 0.7) 80%, var(--ground)), url("img/trees.jpg") center / cover; opacity: 0.55; border-radius: 6px; }
-.lines p { font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 6vw, 46px); line-height: 1.1; max-width: 18ch; margin: 0; text-wrap: balance; }
-.lines small { display: block; margin-top: 8px; font-family: var(--font-body); font-weight: 500; font-size: 16px; color: var(--ink-soft); }
+/* ---------- letter ---------- */
+.letter { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; padding-block: 60px 80px; display: none; }
+.read .letter { display: block; }
+.sheet {
+  background: linear-gradient(var(--paper), var(--paper-2)); color: var(--ink); border-radius: 6px; padding: 44px 24px 56px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .55); position: relative; text-align: center;
+  background-image: repeating-linear-gradient(transparent 0 33px, rgba(122, 90, 94, .06) 33px 34px), linear-gradient(var(--paper), var(--paper-2));
+}
+.sheet::before { content: ""; position: absolute; inset: 10px; border: 1px solid rgba(161, 29, 51, .22); border-radius: 3px; pointer-events: none; }
+.sheet h2 { font-family: var(--script); font-weight: 400; color: var(--seal); font-size: clamp(40px, 11vw, 60px); margin: 0 0 14px; line-height: 1.05; }
+.sheet p { font-family: var(--serif); font-size: clamp(21px, 5.4vw, 26px); line-height: 1.35; font-weight: 500; margin: 0 auto 18px; max-width: 24em; }
+.sheet .small { font-family: var(--sans); font-size: 14px; color: var(--ink-soft); }
+.sheet em { font-style: italic; color: var(--seal); }
+.orn { display: block; width: 90px; margin: 26px auto; color: var(--seal); opacity: .7; }
+.photo { margin: 34px auto 18px; width: min(100%, 440px); position: relative; rotate: var(--r, 0deg); }
+.photo .frame { background: #fffaf3; padding: 10px 10px 12px; border-radius: 3px; box-shadow: 0 14px 34px rgba(58, 15, 26, .35); }
+.photo img { display: block; width: 100%; height: auto; border-radius: 2px; }
+.photo.tall { width: min(100%, 360px); }
+.photo::before { content: ""; position: absolute; left: 50%; top: -12px; z-index: 2; width: 90px; height: 24px; translate: -50% 0; rotate: -3deg; background: rgba(230, 195, 138, .6); box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+.verse { margin-top: 22px; }
+.verse p { margin-bottom: 8px; }
+.verse .big { font-size: clamp(26px, 7vw, 34px); font-style: italic; line-height: 1.2; color: var(--seal); }
+
+.js .rv { opacity: 0; transform: translateY(26px); transition: opacity 1s ease, transform 1s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0s); }
+.js .rv.in { opacity: 1; transform: none; }
+.js .photo.rv { transform: translateY(26px) scale(.96); }
+.js .photo.rv.in { transform: none; }
 
 /* ---------- invitation ---------- */
-.heart { width: 92px; margin-bottom: 18px; animation: beat 1.3s ease-in-out infinite; filter: drop-shadow(0 0 24px rgba(255, 59, 48, 0.7)); }
-.group-label { font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); margin: 28px 0 12px; }
+.invite { margin-top: 26px; padding-top: 10px; }
+.invite .heart { width: 70px; margin: 0 auto 10px; display: block; animation: beat 1.4s ease-in-out infinite; filter: drop-shadow(0 6px 14px rgba(161, 29, 51, .45)); }
+.label { font-family: var(--sans); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); margin: 24px 0 10px; }
 .chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-.chip { font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); background: transparent; border: 1px solid #4a2f33; border-radius: 999px; padding: 10px 18px; cursor: pointer; min-height: 44px; transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.15s; }
-.chip:hover { border-color: var(--gold); }
-.chip:active { transform: scale(0.95); }
-.chip[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: #1a1004; }
-.chip:focus-visible, .btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-.draft-label { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); margin: 34px 0 8px; }
-.draft { width: min(100%, 520px); padding: 18px; border-radius: 14px; background: var(--ground-2); border: 1px dashed #4a2f33; font-size: 16px; user-select: all; white-space: pre-wrap; text-align: left; margin-bottom: 20px; }
-.actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center; }
-.btn { font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 26px; border-radius: 999px; border: 1px solid transparent; }
-.btn.primary { background: var(--red); color: #fff; box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.6); animation: ping 2.2s ease-out infinite; }
-.btn.primary:hover { filter: brightness(1.1); }
-.btn.quiet { background: transparent; color: var(--ink); border-color: #4a2f33; }
-.btn.quiet:hover { border-color: var(--gold); }
-.status { min-height: 1.6em; margin: 14px 0 0; color: var(--gold); font-size: 15px; }
-footer { padding-top: 40px; margin-top: 40px; color: var(--ink-soft); font-size: 14px; text-align: center; border-top: 1px solid var(--line); }
-footer p { margin-inline: auto; }
-footer strong { color: var(--ink); }
+.chip { font-size: 15px; font-weight: 600; font-family: var(--sans); color: var(--ink); background: transparent; border: 1px solid rgba(161, 29, 51, .4); border-radius: 999px; padding: 10px 18px; min-height: 44px; cursor: pointer; transition: background .15s, color .15s, transform .15s; }
+.chip:active { transform: scale(.95); }
+.chip[aria-pressed="true"] { background: var(--seal); border-color: var(--seal); color: #fff; }
+.draft { margin: 24px auto 18px; width: 100%; padding: 16px 18px; border-radius: 12px; background: rgba(255, 250, 243, .75); border: 1px dashed rgba(161, 29, 51, .4); font-family: var(--serif); font-size: 20px; line-height: 1.35; user-select: all; white-space: pre-wrap; text-align: left; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.sheet .btn.primary { background: linear-gradient(135deg, #c23350, var(--seal)); color: #fff; box-shadow: 0 8px 24px rgba(161, 29, 51, .35); }
+.sheet .btn.quiet { color: var(--ink); border-color: rgba(161, 29, 51, .4); }
+.status { min-height: 1.6em; margin: 14px 0 0; color: var(--seal); font-family: var(--sans); font-size: 14px; }
+.sign { margin-top: 30px; font-family: var(--script); font-size: 34px; color: var(--seal); }
 
-/* ---------- gate + sound ---------- */
-.gate { position: fixed; inset: 0; z-index: 50; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; text-align: center;
-  padding: 24px max(16px, env(safe-area-inset-right, 0px)) 24px max(16px, env(safe-area-inset-left, 0px));
-  background: radial-gradient(90% 70% at 50% 30%, var(--red-deep), var(--ground) 75%); transition: opacity 0.6s; }
-.gate[hidden] { display: none; }
-.gate.out { opacity: 0; pointer-events: none; }
-.gate h2 { margin: 0; }
-.gate p { margin: 0; color: var(--ink-soft); max-width: 34ch; }
-.sound { position: fixed; z-index: 40; right: max(16px, env(safe-area-inset-right, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px)); min-width: 48px; padding-inline: 18px; background: rgba(11, 7, 8, 0.7); }
+.sound { position: fixed; z-index: 40; right: max(14px, env(safe-area-inset-right, 0px)); bottom: max(14px, env(safe-area-inset-bottom, 0px)); min-height: 44px; padding: 8px 16px; font-size: 14px; background: rgba(18, 8, 11, .75); }
+.sound[hidden] { display: none; }
 
-/* ---------- motion ---------- */
-.js .rv { opacity: 0; transform: translateY(34px) scale(0.97); transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1); transition-delay: var(--d, 0s); }
-.js .rv.in { opacity: 1; transform: none; }
-.js .hero .h { opacity: 0; }
-.go .hero .h { animation: rise 1s cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: var(--d, 0s); }
-[data-p] { translate: 0 var(--py, 0px); }
-@keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
-@keyframes spin { to { transform: rotate(360deg); } }
-@keyframes blink { 50% { opacity: 0; } }
-@keyframes drip { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
-@keyframes sweep { 0%, 35% { transform: translateX(-130%); } 70%, 100% { transform: translateX(130%); } }
-@keyframes glow { 0%, 100% { box-shadow: 0 0 30px rgba(255, 59, 48, 0.3); } 50% { box-shadow: 0 0 80px rgba(255, 59, 48, 0.6); } }
-@keyframes pulse { 0% { opacity: 0.7; scale: 0.4; } 100% { opacity: 0; scale: 1.7; } }
-@keyframes beat { 0%, 100% { transform: scale(1); } 14% { transform: scale(1.16); } 28% { transform: scale(1); } 42% { transform: scale(1.1); } 70% { transform: scale(1); } }
-@keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.55); } 70%, 100% { box-shadow: 0 0 0 18px rgba(255, 59, 48, 0); } }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { animation: none !important; transition: none !important; }
-  .js .rv, .js .hero .h { opacity: 1; transform: none; }
-  [data-p] { translate: none; }
+  *, *::before, *::after { animation: none !important; transition-duration: .01s !important; }
+  .js .rv { opacity: 1; transform: none; }
 }
 </style>
 </head>
-<body>
+<body class="locked">
 <canvas id="fx" aria-hidden="true"></canvas>
+<audio id="bgm" src="into-it.mp3" loop preload="auto" playsinline></audio>
 
-<div class="gate" id="gate">
-  <h2>Включи звук</h2>
-  <p>Для тебя есть музыка. Сделай погромче, и когда будешь готова, нажми кнопку.</p>
-  <button class="btn primary" id="enter" type="button">Я готова</button>
-</div>
+<!-- 1. Sound check -->
+<section class="step on" id="s1" aria-labelledby="t1">
+  <div class="eq" id="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <h1 id="t1">Проверка звука</h1>
+  <p>Для тебя есть музыка. Включи звук на телефоне, проверь, что беззвучный режим выключен, и нажми кнопку.</p>
+  <div class="row">
+    <button class="btn primary" id="test" type="button">Проверить звук</button>
+  </div>
+  <div class="row" id="heard" hidden>
+    <button class="btn primary" id="yes" type="button">Слышу</button>
+    <button class="btn quiet" id="no" type="button">Не слышно</button>
+  </div>
+  <p class="hint" id="hint" role="status"></p>
+</section>
+
+<!-- 2. Ready -->
+<section class="step" id="s2" aria-labelledby="t2">
+  <span class="script">Динара,</span>
+  <h1 id="t2">Ты готова?</h1>
+  <p>Тебе пришло письмо. Когда будешь готова, нажми кнопку, и заиграет песня.</p>
+  <button class="btn primary" id="ready" type="button">Я готова</button>
+</section>
+
+<!-- 3. Envelope -->
+<section class="stage" id="stage" aria-label="Письмо">
+  <p class="to">Для Динары</p>
+  <button class="env" id="env" type="button" aria-label="Открыть конверт">
+    <span class="back"></span>
+    <span class="note">С любовью…</span>
+    <span class="front"></span>
+    <span class="flap"></span>
+    <span class="seal"><svg viewBox="0 0 100 88" aria-hidden="true"><path d="M50 86C10 56 0 36 0 23 0 9 12 0 25 0c12 0 21 7 25 15C54 7 63 0 75 0c13 0 25 9 25 23 0 13-10 33-50 63z"/></svg></span>
+  </button>
+  <p class="tap" id="tap">Нажми, чтобы открыть</p>
+</section>
 <button class="btn quiet sound" id="sound" type="button" aria-pressed="true" hidden>Звук: вкл</button>
-<audio id="bgm" src="die-for-you.m4a" loop preload="auto"></audio>
 
-<main class="wrap">
-  <header class="hero" id="top">
-    <div class="ring h" style="--d:.05s"><img src="img/portrait.jpg" alt="Жанель" width="900" height="900"></div>
-    <p class="eyebrow h" style="--d:.2s">Знакомство</p>
-    <h1 id="typed" data-text="Привет, Жанель.">Привет, Жанель.</h1>
-    <p class="sub h" style="--d:2.2s">Меня зовут Руслан. Я сделал для тебя маленькое кино про тебя.</p>
-    <a class="scroll h" href="#eyes" style="--d:2.8s">Листай вниз</a>
-  </header>
+<!-- 4. Letter -->
+<main class="letter" id="letter">
+  <article class="sheet">
+    <p class="small rv" style="letter-spacing:.2em;text-transform:uppercase">Письмо</p>
+    <h2 class="rv">Динара,</h2>
+    <p class="rv" style="--d:.1s">я хочу сказать тебе несколько слов. Не потому что надо, а потому что не смог промолчать.</p>
 
-  <section class="chapter" id="eyes">
-    <p class="eyebrow rv">Взгляд</p>
-    <figure class="eye-photo rv" style="margin-inline:auto" data-p="0.05">
-      <img src="img/petronas.jpg" alt="Жанель ночью у башен Петронас" width="534" height="954" loading="lazy">
-    </figure>
-    <h2 class="rv">У тебя очень красивые <em>глаза</em></h2>
-    <p class="rv" style="--d:.1s">Тёмные, внимательные, с лёгкой хитринкой. Я смотрел на этот кадр и забыл, что за твоей спиной башни Петронас.</p>
-    <div class="song rv" style="--d:.15s">
-      <i></i><i></i><i></i>
-      <p class="t">Blinding Lights</p>
-      <p class="by">The Weeknd</p>
-    </div>
-    <p class="rv" style="margin-top:20px">Пока я смотрел твои фото, в голове играла именно она. Сначала думал, что из-за концерта. Оказалось, из-за твоего взгляда.</p>
-  </section>
-
-  <section class="chapter" id="stories">
-    <p class="eyebrow rv">Твои истории</p>
-    <h2 class="rv">Я посмотрел, <em>как ты живёшь</em></h2>
-    <div class="reel">
-      <figure class="polaroid rv" style="--r:-4deg;--d:0s"><img src="img/statue.jpg" alt="Концерт The Weeknd" loading="lazy"><figcaption>Концерт The Weeknd</figcaption></figure>
-      <figure class="polaroid rv" style="--r:3deg;--d:.12s"><img src="img/dior.jpg" alt="Золотой фасад Dior" loading="lazy"><figcaption>Золото Dior</figcaption></figure>
-      <figure class="polaroid rv" style="--r:-2deg;--d:.24s"><img src="img/street.jpg" alt="Ночной город" loading="lazy"><figcaption>Огни ночного города</figcaption></figure>
-      <figure class="polaroid rv" style="--r:4deg;--d:0s"><img src="img/cap.jpg" alt="Осенний лес" loading="lazy"><figcaption>Берёзы и ты</figcaption></figure>
-      <figure class="polaroid rv" style="--r:-3deg;--d:.12s"><img src="img/leaves.jpg" alt="Осенние листья" loading="lazy"><figcaption>Осень под ногами</figcaption></figure>
-      <figure class="polaroid rv" style="--r:2deg;--d:.24s"><img src="img/fire.jpg" alt="Огонь в печи" loading="lazy"><figcaption>Огонь и тишина</figcaption></figure>
-    </div>
-    <div class="lines">
-      <p class="rv">Ты умеешь громко.<small>Концерт, дым, красный свет.</small></p>
-      <p class="rv">И умеешь тихо.<small>Берёзы, листья, огонь в печи.</small></p>
-      <p class="rv">И везде получается <em>красиво.</em></p>
-      <p class="rv">Поэтому я не смог пройти мимо.</p>
-    </div>
-  </section>
-
-  <section class="chapter" id="invite">
-    <p class="eyebrow rv">Свидание</p>
-    <svg class="heart rv" viewBox="0 0 100 88" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff6a4d"/><stop offset="1" stop-color="#ff3b30"/></linearGradient></defs><path fill="url(#hg)" d="M50 86C10 56 0 36 0 23 0 9 12 0 25 0c12 0 21 7 25 15C54 7 63 0 75 0c13 0 25 9 25 23 0 13-10 33-50 63z"/></svg>
-    <h2 class="rv">Давай выпьем <em>кофе?</em></h2>
-    <p class="rv">Ты расскажешь про поездку и концерт, а я послушаю. Выбери, как тебе удобнее.</p>
-
-    <p class="group-label rv">Когда</p>
-    <div class="chips rv" data-group="day">
-      <button class="chip" type="button" aria-pressed="true" data-v="в эту субботу">Суббота</button>
-      <button class="chip" type="button" aria-pressed="false" data-v="в это воскресенье">Воскресенье</button>
-      <button class="chip" type="button" aria-pressed="false" data-v="в другой день, давай обсудим">Другой день</button>
+    <figure class="photo rv" style="--r:-2deg"><div class="frame"><img src="img/city.jpg" alt="Динара смотрит на город с высоты" width="1000" height="812" loading="lazy"></div></figure>
+    <div class="verse rv">
+      <p class="big">Ты стоишь над целым городом, и кажется, что он ждёт твоего решения.</p>
+      <p>В тебе есть спокойная сила. Рядом с такой хочется быть лучше.</p>
     </div>
 
-    <p class="group-label rv">Куда</p>
-    <div class="chips rv" data-group="place">
-      <button class="chip" type="button" aria-pressed="true" data-v="выпьем кофе">Кофе</button>
-      <button class="chip" type="button" aria-pressed="false" data-v="прогуляемся">Прогулка</button>
-      <button class="chip" type="button" aria-pressed="false" data-v="сходим на выставку">Выставка</button>
+    <svg class="orn" viewBox="0 0 90 12" aria-hidden="true"><path d="M0 6h34M56 6h34" stroke="currentColor" fill="none"/><path d="M45 10C36 4 36 1 40 1c2 0 4 1 5 3 1-2 3-3 5-3 4 0 4 3-5 9z" fill="currentColor"/></svg>
+
+    <figure class="photo rv" style="--r:2deg"><div class="frame"><img src="img/sunset.jpg" alt="Динара на закате с цветком в волосах" width="1000" height="812" loading="lazy"></div></figure>
+    <div class="verse rv">
+      <p class="big">Даже закат рядом с тобой выглядит скромнее.</p>
+      <p>Золотой свет, цветок в волосах и взгляд, от которого забываешь, что хотел сказать.</p>
     </div>
 
-    <p class="draft-label">Твой ответ</p>
-    <div class="draft" id="draft" aria-live="polite"></div>
-    <div class="actions">
-      <a class="btn primary" id="send" href="#invite" target="_blank" rel="noopener">Ответить Руслану</a>
-      <button class="btn quiet" id="later" type="button">Мне нужно подумать</button>
-    </div>
-    <p class="status" id="status" role="status"></p>
-  </section>
+    <svg class="orn" viewBox="0 0 90 12" aria-hidden="true"><path d="M0 6h34M56 6h34" stroke="currentColor" fill="none"/><path d="M45 10C36 4 36 1 40 1c2 0 4 1 5 3 1-2 3-3 5-3 4 0 4 3-5 9z" fill="currentColor"/></svg>
 
-  <footer>
-    <p>С любопытством, <strong>Руслан</strong>. Если ты не хочешь продолжать, просто закрой страницу. Я пойму.</p>
-  </footer>
+    <figure class="photo rv" style="--r:-1.5deg"><div class="frame"><img src="img/penguins.jpg" alt="Динара рядом с пингвинами" width="1000" height="812" loading="lazy"></div></figure>
+    <div class="verse rv">
+      <p class="big">Ты умеешь удивляться.</p>
+      <p>Смотришь на мир так, будто видишь его впервые. Это большая редкость, и это очень красиво.</p>
+    </div>
+
+    <svg class="orn" viewBox="0 0 90 12" aria-hidden="true"><path d="M0 6h34M56 6h34" stroke="currentColor" fill="none"/><path d="M45 10C36 4 36 1 40 1c2 0 4 1 5 3 1-2 3-3 5-3 4 0 4 3-5 9z" fill="currentColor"/></svg>
+
+    <figure class="photo rv" style="--r:1.5deg"><div class="frame"><img src="img/dubai.jpg" alt="Динара на фоне ночных огней" width="1000" height="812" loading="lazy"></div></figure>
+    <div class="verse rv">
+      <p class="big">Огни города — просто фон. Свет здесь ты.</p>
+      <p>Вечер, вода, небоскрёбы, а взгляд всё равно возвращается к тебе.</p>
+    </div>
+
+    <svg class="orn" viewBox="0 0 90 12" aria-hidden="true"><path d="M0 6h34M56 6h34" stroke="currentColor" fill="none"/><path d="M45 10C36 4 36 1 40 1c2 0 4 1 5 3 1-2 3-3 5-3 4 0 4 3-5 9z" fill="currentColor"/></svg>
+
+    <figure class="photo rv" style="--r:-2deg"><div class="frame"><img src="img/pavilion.jpg" alt="Динара улыбается у золотого павильона" width="1000" height="812" loading="lazy"></div></figure>
+    <div class="verse rv">
+      <p class="big">С твоей улыбкой вокруг становится тише.</p>
+      <p>Золотой храм, вода, зелень, но самое тёплое в кадре — ты.</p>
+    </div>
+
+    <svg class="orn" viewBox="0 0 90 12" aria-hidden="true"><path d="M0 6h34M56 6h34" stroke="currentColor" fill="none"/><path d="M45 10C36 4 36 1 40 1c2 0 4 1 5 3 1-2 3-3 5-3 4 0 4 3-5 9z" fill="currentColor"/></svg>
+
+    <figure class="photo rv" style="--r:2deg"><div class="frame"><img src="img/ears.jpg" alt="Динара в ободке с ушками оборачивается и улыбается" width="1000" height="812" loading="lazy"></div></figure>
+    <div class="verse rv">
+      <p class="big">Ты оборачиваешься, и день сразу становится светлее.</p>
+      <p>В тебе есть лёгкость и озорство. С тобой, кажется, не бывает скучно.</p>
+    </div>
+
+    <svg class="orn" viewBox="0 0 90 12" aria-hidden="true"><path d="M0 6h34M56 6h34" stroke="currentColor" fill="none"/><path d="M45 10C36 4 36 1 40 1c2 0 4 1 5 3 1-2 3-3 5-3 4 0 4 3-5 9z" fill="currentColor"/></svg>
+
+    <figure class="photo rv" style="--r:-1.5deg"><div class="frame"><img src="img/field.jpg" alt="Динара в поле жёлтых цветов, ветер в волосах" width="1000" height="812" loading="lazy"></div></figure>
+    <div class="verse rv">
+      <p class="big">Ветер в волосах, цветы вокруг, и всё так, будто задумано заранее.</p>
+      <p>Ты красива так легко, что это даже не замечаешь.</p>
+    </div>
+
+    <svg class="orn" viewBox="0 0 90 12" aria-hidden="true"><path d="M0 6h34M56 6h34" stroke="currentColor" fill="none"/><path d="M45 10C36 4 36 1 40 1c2 0 4 1 5 3 1-2 3-3 5-3 4 0 4 3-5 9z" fill="currentColor"/></svg>
+
+    <figure class="photo rv" style="--r:1.5deg"><div class="frame"><img src="img/waterfall.jpg" alt="Динара у водопада" width="1000" height="812" loading="lazy"></div></figure>
+    <div class="verse rv">
+      <p class="big">Рядом с тобой хочется замедлиться.</p>
+      <p>Остановиться, послушать, не торопиться. Как у воды, которая никуда не спешит.</p>
+    </div>
+
+    <svg class="orn" viewBox="0 0 90 12" aria-hidden="true"><path d="M0 6h34M56 6h34" stroke="currentColor" fill="none"/><path d="M45 10C36 4 36 1 40 1c2 0 4 1 5 3 1-2 3-3 5-3 4 0 4 3-5 9z" fill="currentColor"/></svg>
+
+    <figure class="photo tall rv" style="--r:-1deg"><div class="frame"><img src="img/beach.jpg" alt="Динара на берегу моря, силуэт на закате" width="957" height="1000" loading="lazy"></div></figure>
+    <div class="verse rv">
+      <p class="big">Любой закат лучше, когда есть с кем на него смотреть.</p>
+      <p>Поэтому я и пишу тебе это письмо.</p>
+    </div>
+
+    <svg class="orn" viewBox="0 0 90 12" aria-hidden="true"><path d="M0 6h34M56 6h34" stroke="currentColor" fill="none"/><path d="M45 10C36 4 36 1 40 1c2 0 4 1 5 3 1-2 3-3 5-3 4 0 4 3-5 9z" fill="currentColor"/></svg>
+
+    <section class="invite" id="invite">
+      <svg class="heart rv" viewBox="0 0 100 88" aria-hidden="true"><path fill="#a11d33" d="M50 86C10 56 0 36 0 23 0 9 12 0 25 0c12 0 21 7 25 15C54 7 63 0 75 0c13 0 25 9 25 23 0 13-10 33-50 63z"/></svg>
+      <p class="small rv" style="letter-spacing:.2em;text-transform:uppercase">Приглашение</p>
+      <h2 class="rv">Динара, пойдём<br>на свидание?</h2>
+      <p class="rv">Я хочу провести с тобой вечер: поговорить, посмеяться и узнать тебя лучше. Выбери, как тебе удобно.</p>
+
+      <p class="label rv">Когда</p>
+      <div class="chips rv" data-group="day">
+        <button class="chip" type="button" aria-pressed="true" data-v="в эту субботу">Суббота</button>
+        <button class="chip" type="button" aria-pressed="false" data-v="в это воскресенье">Воскресенье</button>
+        <button class="chip" type="button" aria-pressed="false" data-v="в другой день, давай обсудим">Другой день</button>
+      </div>
+
+      <p class="label rv">Куда</p>
+      <div class="chips rv" data-group="place">
+        <button class="chip" type="button" aria-pressed="true" data-v="сходим на ужин">Ужин</button>
+        <button class="chip" type="button" aria-pressed="false" data-v="выпьем кофе">Кофе</button>
+        <button class="chip" type="button" aria-pressed="false" data-v="погуляем и посмотрим закат">Закат и прогулка</button>
+      </div>
+
+      <div class="draft" id="draft" aria-live="polite"></div>
+      <div class="actions">
+        <a class="btn primary" id="send" href="#invite" target="_blank" rel="noopener">Ответить Руслану</a>
+        <button class="btn quiet" id="later" type="button">Мне нужно подумать</button>
+      </div>
+      <p class="status" id="status" role="status"></p>
+      <p class="sign rv">Твой Руслан</p>
+      <p class="small">Если ты не хочешь продолжать, просто закрой страницу. Я пойму.</p>
+    </section>
+  </article>
 </main>
 
 <script>
@@ -262,15 +319,90 @@ footer strong { color: var(--ink); }
   var CONTACT_INSTAGRAM = "";
   var HIS_NAME = "Руслан";
   var REDUCED = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var $ = function (id) { return document.getElementById(id); };
+  var bgm = $("bgm");
+
+  /* ---------- step 1: sound check (plays the real song quietly through the same <audio>) ---------- */
+  var checkTimer = null;
+  function showStep(from, to) { from.classList.remove("on"); to.classList.add("on"); }
+  $("test").addEventListener("click", function () {
+    $("hint").textContent = "";
+    bgm.currentTime = 0; bgm.muted = false; bgm.volume = 0.6;
+    var p = bgm.play();
+    function ok() {
+      $("eq").classList.add("live"); $("heard").hidden = false; $("test").textContent = "Ещё раз";
+      $("hint").textContent = "Играет проверочный фрагмент. Слышно?";
+      clearTimeout(checkTimer); checkTimer = setTimeout(function () { bgm.pause(); $("eq").classList.remove("live"); }, 7000);
+    }
+    if (p && p.then) p.then(ok, function () { $("hint").textContent = "Браузер не дал включить звук. Нажми ещё раз."; }); else ok();
+  });
+  $("no").addEventListener("click", function () {
+    $("hint").textContent = "Сделай громче, выключи беззвучный режим (переключатель сбоку на iPhone) и нажми «Ещё раз».";
+    bgm.pause(); $("eq").classList.remove("live");
+  });
+  $("yes").addEventListener("click", function () {
+    clearTimeout(checkTimer); bgm.pause(); bgm.currentTime = 0; $("eq").classList.remove("live");
+    showStep($("s1"), $("s2"));
+  });
+
+  /* ---------- step 2: ready -> song starts from the beginning, envelope appears ---------- */
+  var fadeTimer = null;
+  function fadeTo(v) {
+    clearInterval(fadeTimer);
+    fadeTimer = setInterval(function () {
+      var d = v - bgm.volume;
+      if (Math.abs(d) < 0.03) { bgm.volume = v; clearInterval(fadeTimer); return; }
+      bgm.volume = Math.max(0, Math.min(1, bgm.volume + (d > 0 ? 0.03 : -0.03)));
+    }, 60);
+  }
+  $("ready").addEventListener("click", function () {
+    bgm.currentTime = 0; bgm.muted = false; bgm.volume = 0;
+    var p = bgm.play();
+    if (p && p.then) p.then(function () { fadeTo(0.85); }, function () { soundBtn.textContent = "Звук: выкл"; soundBtn.setAttribute("aria-pressed", "false"); });
+    showStep($("s2"), $("stage")); $("stage").classList.add("on");
+    $("s2").classList.remove("on");
+    $("sound").hidden = false;
+    var r = $("ready").getBoundingClientRect(); burst(r.left + r.width / 2, r.top + r.height / 2, 30);
+  });
+
+  /* ---------- step 3: open the envelope ---------- */
+  var opened = false;
+  $("env").addEventListener("click", function () {
+    if (opened) return; opened = true;
+    $("env").classList.add("open"); $("tap").style.visibility = "hidden";
+    var r = $("env").getBoundingClientRect(); burst(r.left + r.width / 2, r.top + r.height / 2, 40);
+    setTimeout(function () {
+      $("stage").classList.add("gone");
+      document.body.classList.remove("locked"); document.body.classList.add("read");
+      window.scrollTo(0, 0); observe();
+    }, REDUCED ? 100 : 2300);
+  });
+
+  /* ---------- sound toggle ---------- */
+  var soundBtn = $("sound");
+  soundBtn.addEventListener("click", function () {
+    var on = bgm.paused || bgm.muted;
+    if (on) { bgm.muted = false; bgm.play().then(function () { fadeTo(0.85); }, function () {}); } else { bgm.pause(); }
+    soundBtn.textContent = on ? "Звук: вкл" : "Звук: выкл";
+    soundBtn.setAttribute("aria-pressed", on ? "true" : "false");
+  });
+
+  /* ---------- scroll reveal ---------- */
+  function observe() {
+    var rv = document.querySelectorAll(".rv");
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (en) {
+        en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } });
+      }, { threshold: 0.15 });
+      rv.forEach(function (el) { io.observe(el); });
+    } else { rv.forEach(function (el) { el.classList.add("in"); }); }
+  }
 
   /* ---------- reply logic ---------- */
-  var state = { day: "в эту субботу", place: "выпьем кофе" };
-  var draftEl = document.getElementById("draft");
-  var statusEl = document.getElementById("status");
-  var sendEl = document.getElementById("send");
-
-  function message() { return "Привет, " + HIS_NAME + "! Я посмотрела твою страницу. Давай " + state.place + " " + state.day + "."; }
-  function laterMessage() { return "Привет, " + HIS_NAME + "! Спасибо, мне приятно. Давай чуть позже вернёмся к этому разговору."; }
+  var state = { day: "в эту субботу", place: "сходим на ужин" };
+  var draftEl = $("draft"), statusEl = $("status"), sendEl = $("send");
+  function message() { return "Привет, " + HIS_NAME + "! Я получила твоё письмо. Давай " + state.place + " " + state.day + "."; }
+  function laterMessage() { return "Привет, " + HIS_NAME + "! Спасибо за письмо, мне приятно. Давай чуть позже вернёмся к этому разговору."; }
   function link(text) {
     if (CONTACT_TELEGRAM) return "https://t.me/" + encodeURIComponent(CONTACT_TELEGRAM) + "?text=" + encodeURIComponent(text);
     if (CONTACT_INSTAGRAM) return "https://ig.me/m/" + encodeURIComponent(CONTACT_INSTAGRAM);
@@ -278,7 +410,7 @@ footer strong { color: var(--ink); }
   }
   function updateLink() {
     var l = link(message());
-    if (l) { sendEl.href = l; } else { sendEl.removeAttribute("href"); sendEl.removeAttribute("target"); }
+    if (l) { sendEl.href = l; sendEl.target = "_blank"; } else { sendEl.removeAttribute("href"); sendEl.removeAttribute("target"); }
   }
   function render() { draftEl.textContent = message(); updateLink(); }
   function copy(text, okText) {
@@ -305,85 +437,22 @@ footer strong { color: var(--ink); }
     copy(message(), l ? "Текст скопирован, и чат открывается в новой вкладке. Если он пустой, вставь текст." : "Текст скопирован. Вставь его мне в личные сообщения.");
     if (!l) e.preventDefault();
   });
-  document.getElementById("later").addEventListener("click", function () {
+  $("later").addEventListener("click", function () {
     draftEl.textContent = laterMessage();
     copy(laterMessage(), "Текст скопирован. Можешь отправить его, когда будет удобно.");
   });
 
-  /* ---------- music + gate ---------- */
-  var bgm = document.getElementById("bgm"), gate = document.getElementById("gate"), soundBtn = document.getElementById("sound");
-  var fadeTimer = null;
-  function fadeTo(v) {
-    clearInterval(fadeTimer);
-    fadeTimer = setInterval(function () {
-      var d = v - bgm.volume;
-      if (Math.abs(d) < 0.03) { bgm.volume = v; clearInterval(fadeTimer); return; }
-      bgm.volume = Math.max(0, Math.min(1, bgm.volume + (d > 0 ? 0.03 : -0.03)));
-    }, 60);
-  }
-  function typeInto(el, text) {
-    var i = 0; el.textContent = ""; el.classList.add("typing");
-    (function step() {
-      el.textContent = text.slice(0, ++i);
-      if (i < text.length) setTimeout(step, 85); else setTimeout(function () { el.classList.remove("typing"); }, 1600);
-    })();
-  }
-  document.getElementById("enter").addEventListener("click", function () {
-    bgm.muted = false; bgm.volume = 0;
-    var pr = bgm.play();
-    if (pr && pr.then) pr.then(function () { fadeTo(0.7); }, function () { soundBtn.textContent = "Звук: выкл"; soundBtn.setAttribute("aria-pressed", "false"); });
-    gate.classList.add("out");
-    setTimeout(function () { gate.hidden = true; }, 650);
-    soundBtn.hidden = false;
-    document.body.classList.add("go");
-    var h = document.getElementById("typed");
-    if (!REDUCED) typeInto(h, h.dataset.text);
-    var e = document.getElementById("enter").getBoundingClientRect(); burst(e.left + e.width / 2, e.top + e.height / 2, 30);
-  });
-  soundBtn.addEventListener("click", function () {
-    var on = bgm.paused || bgm.muted;
-    if (on) { bgm.muted = false; bgm.play().then(function () { fadeTo(0.7); }, function () {}); } else { bgm.pause(); }
-    soundBtn.textContent = on ? "Звук: вкл" : "Звук: выкл";
-    soundBtn.setAttribute("aria-pressed", on ? "true" : "false");
-  });
-
-  /* ---------- scroll reveal + parallax ---------- */
-  var rv = document.querySelectorAll(".rv");
-  if ("IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function (en) {
-      en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } });
-    }, { threshold: 0.18 });
-    rv.forEach(function (el) { io.observe(el); });
-  } else { rv.forEach(function (el) { el.classList.add("in"); }); }
-
-  var par = Array.prototype.slice.call(document.querySelectorAll("[data-p]"));
-  var tick = false;
-  function parallax() {
-    tick = false;
-    par.forEach(function (el) {
-      var r = el.parentElement.getBoundingClientRect();
-      var off = (r.top + r.height / 2 - innerHeight / 2) * -parseFloat(el.dataset.p);
-      el.style.setProperty("--py", off.toFixed(1) + "px");
-    });
-  }
-  if (!REDUCED) window.addEventListener("scroll", function () { if (!tick) { tick = true; requestAnimationFrame(parallax); } }, { passive: true });
-
-  window.addEventListener("pointermove", function (e) {
-    document.documentElement.style.setProperty("--mx", e.clientX + "px");
-    document.documentElement.style.setProperty("--my", e.clientY + "px");
-  }, { passive: true });
-
-  /* ---------- drifting hearts and sparks ---------- */
-  var cv = document.getElementById("fx"), cx = cv.getContext("2d"), W = 0, H = 0, P = [], BU = [];
+  /* ---------- drifting petals and hearts ---------- */
+  var cv = $("fx"), cx = cv.getContext("2d"), W = 0, H = 0, P = [], BU = [], running = false;
   function size() {
     var d = Math.min(window.devicePixelRatio || 1, 2);
     W = innerWidth; H = innerHeight; cv.width = W * d; cv.height = H * d; cx.setTransform(d, 0, 0, d, 0, 0);
-    var n = Math.min(34, Math.round(W / 30)); P = [];
+    var n = Math.min(30, Math.round(W / 32)); P = [];
     for (var i = 0; i < n; i++) P.push(spawn(true));
   }
   function spawn(anywhere) {
-    return { x: Math.random() * W, y: anywhere ? Math.random() * H : H + 20, s: 4 + Math.random() * 9, v: 0.2 + Math.random() * 0.6,
-      ph: Math.random() * 6.28, rot: (Math.random() - 0.5) * 0.6, a: 0.1 + Math.random() * 0.25, heart: Math.random() < 0.6 };
+    return { x: Math.random() * W, y: anywhere ? Math.random() * H : H + 20, s: 5 + Math.random() * 9, v: 0.25 + Math.random() * 0.55,
+      ph: Math.random() * 6.28, rot: (Math.random() - 0.5) * 0.7, a: 0.1 + Math.random() * 0.22, heart: Math.random() < 0.6 };
   }
   function drawHeart(x, y, s, rot) {
     cx.save(); cx.translate(x, y); cx.rotate(rot); cx.scale(s, s); cx.beginPath();
@@ -397,19 +466,18 @@ footer strong { color: var(--ink); }
     }
     if (!running) loop();
   }
-  var running = false;
   function frame() {
     cx.clearRect(0, 0, W, H);
     P.forEach(function (p, i) {
       p.y -= p.v; p.ph += 0.012; p.x += Math.sin(p.ph) * 0.35;
       if (p.y < -20) P[i] = spawn(false);
-      cx.fillStyle = p.heart ? "rgba(255,59,48," + p.a + ")" : "rgba(242,180,65," + p.a * 1.2 + ")";
-      if (p.heart) drawHeart(p.x, p.y, p.s, Math.sin(p.ph) * p.rot); else { cx.beginPath(); cx.arc(p.x, p.y, p.s * 0.22, 0, 6.28); cx.fill(); }
+      cx.fillStyle = p.heart ? "rgba(232,120,140," + p.a + ")" : "rgba(230,195,138," + p.a * 1.3 + ")";
+      if (p.heart) drawHeart(p.x, p.y, p.s, Math.sin(p.ph) * p.rot); else { cx.beginPath(); cx.arc(p.x, p.y, p.s * 0.2, 0, 6.28); cx.fill(); }
     });
     BU = BU.filter(function (b) { return b.life > 0; });
     BU.forEach(function (b) {
       b.x += b.vx; b.y += b.vy; b.vy += 0.16; b.vx *= 0.99; b.life -= 0.016;
-      cx.fillStyle = (b.heart ? "rgba(255,90,70," : "rgba(242,180,65,") + Math.max(b.life, 0) + ")";
+      cx.fillStyle = (b.heart ? "rgba(240,110,130," : "rgba(230,195,138,") + Math.max(b.life, 0) + ")";
       if (b.heart) drawHeart(b.x, b.y, b.s, b.vx * 0.05); else { cx.beginPath(); cx.arc(b.x, b.y, b.s * 0.3, 0, 6.28); cx.fill(); }
     });
   }
@@ -426,7 +494,6 @@ footer strong { color: var(--ink); }
   if (REDUCED) frame(); else loop();
 
   render();
-  if (!REDUCED) parallax();
 </script>
 </body>
 </html>
