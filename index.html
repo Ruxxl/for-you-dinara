@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Для Жанель</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;800&family=Manrope:wght@400;500;600&display=swap">
+<style>
+/* Layout: one tall night-scene column. Red concert light + gold from her photos, black ground. Single dark look by choice. */
+:root {
+  --ground: #0b0708;
+  --ground-2: #150d0f;
+  --line: #2b1a1d;
+  --ink: #f5ece6;
+  --ink-soft: #b9a9a3;
+  --red: #ff3b30;
+  --red-deep: #8f1d1a;
+  --gold: #f2b441;
+  --font-display: "Syne", "Arial Black", system-ui, sans-serif;
+  --font-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mx: 50%;
+  --my: 20%;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 64px;
+  overflow-x: hidden;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(520px circle at var(--mx) var(--my), rgba(255, 59, 48, 0.16), transparent 70%);
+  z-index: 0;
+}
+.wrap { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+
+/* hero */
+.hero { padding-block: 72px 56px; }
+.eyebrow {
+  font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); margin: 0 0 20px;
+}
+h1 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(44px, 12vw, 92px); line-height: 0.98; letter-spacing: -0.02em;
+  margin: 0 0 24px; text-wrap: balance;
+}
+h1 em {
+  font-style: normal;
+  background: linear-gradient(100deg, var(--gold), var(--red) 70%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.lede { font-size: 19px; color: var(--ink-soft); max-width: 46ch; margin: 0; }
+
+h2 {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(26px, 6vw, 38px); line-height: 1.1; letter-spacing: -0.01em;
+  margin: 0 0 20px; text-wrap: balance;
+}
+section { padding-block: 44px; border-top: 1px solid var(--line); }
+p { margin: 0 0 16px; max-width: 62ch; }
+
+/* frames from her trips */
+.frames { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 8px; }
+.frame { background: var(--ground-2); border: 1px solid var(--line); border-radius: 14px; padding: 20px 18px; min-width: 0; }
+.frame .where { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin: 0 0 10px; }
+.frame p { margin: 0; font-size: 16px; color: var(--ink); }
+@media (max-width: 560px) { .frames { grid-template-columns: minmax(0, 1fr); } }
+
+/* song / eyes */
+.song {
+  margin: 8px 0 28px; padding: 28px 22px; border-radius: 18px;
+  background: radial-gradient(120% 140% at 50% 0%, var(--red-deep), var(--ground-2) 70%);
+  border: 1px solid var(--line);
+}
+.song .title { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 7vw, 44px); line-height: 1.05; margin: 0 0 6px; }
+.song .by { color: var(--gold); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; margin: 0; }
+.eyes { font-size: 19px; color: var(--ink); }
+
+/* choices */
+.group-label { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); margin: 26px 0 10px; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip {
+  font: inherit; font-size: 15px; font-weight: 600; color: var(--ink);
+  background: transparent; border: 1px solid #4a2f33; border-radius: 999px;
+  padding: 10px 18px; cursor: pointer; min-height: 44px;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.chip:hover { border-color: var(--gold); }
+.chip[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: #1a1004; }
+.chip:focus-visible, .btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+.draft {
+  margin: 28px 0 18px; padding: 18px; border-radius: 14px;
+  background: var(--ground-2); border: 1px dashed #4a2f33;
+  font-size: 16px; user-select: all; white-space: pre-wrap;
+}
+.draft-label { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 8px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.btn {
+  font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; text-decoration: none;
+  display: inline-flex; align-items: center; justify-content: center; min-height: 48px;
+  padding: 12px 26px; border-radius: 999px; border: 1px solid transparent;
+}
+.btn.primary { background: var(--red); color: #fff; }
+.btn.primary:hover { filter: brightness(1.1); }
+.btn.quiet { background: transparent; color: var(--ink); border-color: #4a2f33; }
+.btn.quiet:hover { border-color: var(--gold); }
+.status { min-height: 1.6em; margin: 14px 0 0; color: var(--gold); font-size: 15px; }
+
+footer { padding-top: 40px; color: var(--ink-soft); font-size: 14px; border-top: 1px solid var(--line); }
+footer strong { color: var(--ink); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero > * { animation: rise 0.8s ease both; }
+  .hero > *:nth-child(2) { animation-delay: 0.12s; }
+  .hero > *:nth-child(3) { animation-delay: 0.24s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+}
+</style>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="eyebrow">Только для Жанель</p>
+    <h1>Привет, <em>Жанель.</em></h1>
+    <p class="lede">Я сделал эту страницу для тебя. Так проще, чем объяснять в одном сообщении, почему я решил написать.</p>
+  </header>
+
+  <section>
+    <h2>Я посмотрел твои кадры</h2>
+    <p>Ты умеешь находить места, где хочется остановиться. Вот что мне запомнилось.</p>
+    <div class="frames">
+      <div class="frame"><p class="where">Куала-Лумпур, ночь</p><p>Ты смотришь вверх, и башни Петронас рядом выглядят скромнее.</p></div>
+      <div class="frame"><p class="where">Концерт The Weeknd</p><p>Красный свет, дым и золотая фигура над сценой. Такие вечера помнят годами.</p></div>
+      <div class="frame"><p class="where">Золотой Dior в зелени</p><p>Золотой фасад, пальмы и ты в тёмном образе. Как кадр из журнала.</p></div>
+      <div class="frame"><p class="where">Осенний лес</p><p>Берёзы, жёлтые листья и огонь в печи. Ты умеешь и громко, и тихо.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Про глаза</h2>
+    <div class="song">
+      <p class="title">Blinding Lights</p>
+      <p class="by">The Weeknd</p>
+    </div>
+    <p class="eyes">Когда я смотрел твои фото, у меня в голове играла именно она. Сначала я думал, что из-за концерта. Потом понял, что из-за твоего взгляда.</p>
+    <p>У тебя глаза, в которые хочется смотреть чуть дольше, чем прилично. Внимательные, глубокие, с лёгкой хитринкой. На фото у башен это видно сильнее всего.</p>
+  </section>
+
+  <section id="invite">
+    <h2>Давай выпьем кофе?</h2>
+    <p>Ты расскажешь, как прошла поездка и концерт, а я просто послушаю. Выбери, как тебе удобнее.</p>
+
+    <p class="group-label">Песня, которая зацепила на концерте</p>
+    <div class="chips" data-group="song">
+      <button class="chip" type="button" aria-pressed="true" data-v="Blinding Lights">Blinding Lights</button>
+      <button class="chip" type="button" aria-pressed="false" data-v="Starboy">Starboy</button>
+      <button class="chip" type="button" aria-pressed="false" data-v="Save Your Tears">Save Your Tears</button>
+      <button class="chip" type="button" aria-pressed="false" data-v="Die For You">Die For You</button>
+      <button class="chip" type="button" aria-pressed="false" data-v="другая, расскажу при встрече">Другая</button>
+    </div>
+
+    <p class="group-label">Когда</p>
+    <div class="chips" data-group="day">
+      <button class="chip" type="button" aria-pressed="true" data-v="в эту субботу">Суббота</button>
+      <button class="chip" type="button" aria-pressed="false" data-v="в это воскресенье">Воскресенье</button>
+      <button class="chip" type="button" aria-pressed="false" data-v="в другой день, давай обсудим">Другой день</button>
+    </div>
+
+    <p class="group-label">Куда</p>
+    <div class="chips" data-group="place">
+      <button class="chip" type="button" aria-pressed="true" data-v="выпьем кофе">Кофе</button>
+      <button class="chip" type="button" aria-pressed="false" data-v="прогуляемся">Прогулка</button>
+      <button class="chip" type="button" aria-pressed="false" data-v="сходим на выставку">Выставка</button>
+    </div>
+
+    <p class="draft-label" style="margin-top:28px">Твой ответ</p>
+    <div class="draft" id="draft" aria-live="polite"></div>
+
+    <div class="actions">
+      <a class="btn primary" id="send" href="#invite" target="_blank" rel="noopener">Ответить Руслану</a>
+      <button class="btn quiet" id="later" type="button">Мне нужно подумать</button>
+    </div>
+    <p class="status" id="status" role="status"></p>
+  </section>
+
+  <footer>
+    <p>С любопытством, <strong>Руслан</strong>. Если ты не хочешь продолжать, просто закрой страницу. Я пойму.</p>
+  </footer>
+</div>
+
+<script>
+  // Fill these in before sending her the link. Leave both empty to use copy-only mode.
+  var CONTACT_TELEGRAM = "";   // for example "ruslan_username"
+  var CONTACT_INSTAGRAM = "";  // for example "ruslan.username"
+  var HIS_NAME = "Руслан";
+
+  var state = { song: "Blinding Lights", day: "в эту субботу", place: "выпьем кофе" };
+  var draftEl = document.getElementById("draft");
+  var statusEl = document.getElementById("status");
+  var sendEl = document.getElementById("send");
+
+  function message() {
+    return "Привет, " + HIS_NAME + "! Я посмотрела твою страницу. Песня, которая зацепила меня на концерте: " +
+      state.song + ". Давай " + state.place + " " + state.day + ".";
+  }
+  function laterMessage() {
+    return "Привет, " + HIS_NAME + "! Спасибо, мне приятно. Давай чуть позже вернёмся к этому разговору.";
+  }
+  function render() { draftEl.textContent = message(); updateLink(); }
+  function link(text) {
+    if (CONTACT_TELEGRAM) return "https://t.me/" + encodeURIComponent(CONTACT_TELEGRAM) + "?text=" + encodeURIComponent(text);
+    if (CONTACT_INSTAGRAM) return "https://ig.me/m/" + encodeURIComponent(CONTACT_INSTAGRAM);
+    return "";
+  }
+  function updateLink() {
+    var l = link(message());
+    if (l) { sendEl.href = l; } else { sendEl.removeAttribute("href"); sendEl.removeAttribute("target"); }
+  }
+  function copy(text, okText) {
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(draftEl);
+      var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+      statusEl.textContent = "Выдели и скопируй текст выше, затем отправь его мне в личные сообщения.";
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () { statusEl.textContent = okText; }, fallback);
+    } catch (e) { fallback(); }
+  }
+
+  document.querySelectorAll(".chips").forEach(function (group) {
+    group.addEventListener("click", function (e) {
+      var b = e.target.closest(".chip"); if (!b) return;
+      group.querySelectorAll(".chip").forEach(function (c) { c.setAttribute("aria-pressed", "false"); });
+      b.setAttribute("aria-pressed", "true");
+      state[group.dataset.group] = b.dataset.v;
+      render();
+    });
+  });
+
+  sendEl.addEventListener("click", function (e) {
+    var l = link(message());
+    copy(message(), l ? "Текст скопирован, и чат открывается в новой вкладке. Если он пустой, вставь текст." : "Текст скопирован. Вставь его мне в личные сообщения.");
+    if (!l) e.preventDefault();
+  });
+  document.getElementById("later").addEventListener("click", function () {
+    draftEl.textContent = laterMessage();
+    copy(laterMessage(), "Текст скопирован. Можешь отправить его, когда будет удобно.");
+  });
+
+  window.addEventListener("pointermove", function (e) {
+    document.documentElement.style.setProperty("--mx", e.clientX + "px");
+    document.documentElement.style.setProperty("--my", e.clientY + "px");
+  }, { passive: true });
+
+  render();
+</script>
+
+</html>
