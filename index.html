@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Pinyon+Script&family=Manrope:wght@400;600&display=swap">
 <script>document.documentElement.classList.add("js");</script>
 <style>
-/* Layout: sound check -> ready screen -> sealed envelope -> letter with photos and verses -> date invitation. */
+/* Layout: "turn on sound / I am ready" start screen -> sealed envelope -> letter with photos and verses -> date invitation. */
 :root {
   --night: #12080b;
   --wine: #3a0f1a;
@@ -163,28 +163,14 @@ button { font: inherit; }
 </head>
 <body class="locked">
 <canvas id="fx" aria-hidden="true"></canvas>
-<audio id="bgm" src="into-it.mp3" loop preload="auto" playsinline></audio>
+<audio id="bgm" src="song.mp3" loop preload="auto" playsinline></audio>
 
-<!-- 1. Sound check -->
+<!-- 1. Start -->
 <section class="step on" id="s1" aria-labelledby="t1">
   <div class="eq" id="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-  <h1 id="t1">Проверка звука</h1>
-  <p>Для тебя есть музыка. Включи звук на телефоне, проверь, что беззвучный режим выключен, и нажми кнопку.</p>
-  <div class="row">
-    <button class="btn primary" id="test" type="button">Проверить звук</button>
-  </div>
-  <div class="row" id="heard" hidden>
-    <button class="btn primary" id="yes" type="button">Слышу</button>
-    <button class="btn quiet" id="no" type="button">Не слышно</button>
-  </div>
-  <p class="hint" id="hint" role="status"></p>
-</section>
-
-<!-- 2. Ready -->
-<section class="step" id="s2" aria-labelledby="t2">
   <span class="script">Динара,</span>
-  <h1 id="t2">Ты готова?</h1>
-  <p>Тебе пришло письмо. Когда будешь готова, нажми кнопку, и заиграет песня.</p>
+  <h1 id="t1">Включи звук</h1>
+  <p>Для тебя есть письмо и песня. Сделай погромче, выключи беззвучный режим и, когда будешь готова, нажми кнопку.</p>
   <button class="btn primary" id="ready" type="button">Я готова</button>
 </section>
 
@@ -322,30 +308,9 @@ button { font: inherit; }
   var $ = function (id) { return document.getElementById(id); };
   var bgm = $("bgm");
 
-  /* ---------- step 1: sound check (plays the real song quietly through the same <audio>) ---------- */
-  var checkTimer = null;
   function showStep(from, to) { from.classList.remove("on"); to.classList.add("on"); }
-  $("test").addEventListener("click", function () {
-    $("hint").textContent = "";
-    bgm.currentTime = 0; bgm.muted = false; bgm.volume = 0.6;
-    var p = bgm.play();
-    function ok() {
-      $("eq").classList.add("live"); $("heard").hidden = false; $("test").textContent = "Ещё раз";
-      $("hint").textContent = "Играет проверочный фрагмент. Слышно?";
-      clearTimeout(checkTimer); checkTimer = setTimeout(function () { bgm.pause(); $("eq").classList.remove("live"); }, 7000);
-    }
-    if (p && p.then) p.then(ok, function () { $("hint").textContent = "Браузер не дал включить звук. Нажми ещё раз."; }); else ok();
-  });
-  $("no").addEventListener("click", function () {
-    $("hint").textContent = "Сделай громче, выключи беззвучный режим (переключатель сбоку на iPhone) и нажми «Ещё раз».";
-    bgm.pause(); $("eq").classList.remove("live");
-  });
-  $("yes").addEventListener("click", function () {
-    clearTimeout(checkTimer); bgm.pause(); bgm.currentTime = 0; $("eq").classList.remove("live");
-    showStep($("s1"), $("s2"));
-  });
 
-  /* ---------- step 2: ready -> song starts from the beginning, envelope appears ---------- */
+  /* ---------- start: ready -> song starts from the beginning, envelope appears ---------- */
   var fadeTimer = null;
   function fadeTo(v) {
     clearInterval(fadeTimer);
@@ -359,8 +324,7 @@ button { font: inherit; }
     bgm.currentTime = 0; bgm.muted = false; bgm.volume = 0;
     var p = bgm.play();
     if (p && p.then) p.then(function () { fadeTo(0.85); }, function () { soundBtn.textContent = "Звук: выкл"; soundBtn.setAttribute("aria-pressed", "false"); });
-    showStep($("s2"), $("stage")); $("stage").classList.add("on");
-    $("s2").classList.remove("on");
+    showStep($("s1"), $("stage")); $("eq").classList.add("live");
     $("sound").hidden = false;
     var r = $("ready").getBoundingClientRect(); burst(r.left + r.width / 2, r.top + r.height / 2, 30);
   });
