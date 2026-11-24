@@ -163,7 +163,7 @@ button { font: inherit; }
 </head>
 <body class="locked">
 <canvas id="fx" aria-hidden="true"></canvas>
-<audio id="bgm" src="song.mp3" preload="auto" playsinline></audio>
+<audio id="bgm" src="song.mp3" loop preload="auto" playsinline></audio>
 
 <!-- 1. Start -->
 <section class="step on" id="s1" aria-labelledby="t1">
@@ -307,12 +307,6 @@ button { font: inherit; }
   var REDUCED = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
   var $ = function (id) { return document.getElementById(id); };
   var bgm = $("bgm");
-  // Playlist: plays in order, then starts over.
-  var TRACKS = ["song.mp3", "song2.mp3"], track = 0;
-  bgm.addEventListener("ended", function () {
-    track = (track + 1) % TRACKS.length;
-    bgm.src = TRACKS[track]; bgm.play().catch(function () {});
-  });
 
   function showStep(from, to) { from.classList.remove("on"); to.classList.add("on"); }
 
