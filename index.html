@@ -132,6 +132,14 @@ footer strong { color: var(--ink); }
   @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 }
 
+
+.portrait { width: 100%; max-width: 420px; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 22px; display: block;
+  box-shadow: 0 0 0 1px var(--line), 0 24px 80px rgba(255, 59, 48, 0.32); margin-bottom: 36px; }
+.duo { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 28px; align-items: center; }
+.duo img { width: 100%; height: auto; border-radius: 18px; display: block; box-shadow: 0 0 0 1px var(--line), 0 20px 60px rgba(242, 180, 65, 0.18); }
+.duo p:last-child { margin-bottom: 0; }
+@media (max-width: 560px) { .duo { grid-template-columns: minmax(0, 1fr); } .duo img { max-width: 320px; } }
+
 /* sound gate */
 .gate { position: fixed; inset: 0; z-index: 50; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; text-align: center;
   padding: 24px max(16px, env(safe-area-inset-right, 0px)) 24px max(16px, env(safe-area-inset-left, 0px));
@@ -153,19 +161,20 @@ footer strong { color: var(--ink); }
 
 <div class="wrap">
   <header class="hero">
+    <img class="portrait" src="img/portrait.jpg" alt="Жанель" width="900" height="900">
     <p class="eyebrow">Только для Жанель</p>
-    <h1>Привет, <em>Жанель.</em></h1>
-    <p class="lede">Я сделал эту страницу для тебя. Так проще, чем объяснять в одном сообщении, почему я решил написать.</p>
+    <h1>У тебя очень красивые <em>глаза.</em></h1>
+    <p class="lede">Я Руслан. Увидел твои фото и сделал эту страницу, потому что одним сообщением такое не сказать.</p>
   </header>
 
   <section>
-    <h2>Я посмотрел твои кадры</h2>
-    <p>Ты умеешь находить места, где хочется остановиться. Вот что мне запомнилось.</p>
-    <div class="frames">
-      <div class="frame"><p class="where">Куала-Лумпур, ночь</p><p>Ты смотришь вверх, и башни Петронас рядом выглядят скромнее.</p></div>
-      <div class="frame"><p class="where">Концерт The Weeknd</p><p>Красный свет, дым и золотая фигура над сценой. Такие вечера помнят годами.</p></div>
-      <div class="frame"><p class="where">Золотой Dior в зелени</p><p>Золотой фасад, пальмы и ты в тёмном образе. Как кадр из журнала.</p></div>
-      <div class="frame"><p class="where">Осенний лес</p><p>Берёзы, жёлтые листья и огонь в печи. Ты умеешь и громко, и тихо.</p></div>
+    <div class="duo">
+      <img src="img/dior.jpg" alt="Жанель на фоне золотого фасада" width="618" height="1100" loading="lazy">
+      <div>
+        <h2>У тебя свой стиль</h2>
+        <p>Золотой фасад, пальмы, тёмный образ и спокойный шаг. Как кадр из журнала.</p>
+        <p>А ещё Петронас ночью, концерт The Weeknd с красным светом и огнём, потом осенний лес. Ты умеешь и громко, и тихо, и это редкость.</p>
+      </div>
     </div>
   </section>
 
@@ -181,16 +190,7 @@ footer strong { color: var(--ink); }
 
   <section id="invite">
     <h2>Давай выпьем кофе?</h2>
-    <p>Ты расскажешь, как прошла поездка и концерт, а я просто послушаю. Выбери, как тебе удобнее.</p>
-
-    <p class="group-label">Песня, которая зацепила на концерте</p>
-    <div class="chips" data-group="song">
-      <button class="chip" type="button" aria-pressed="true" data-v="Blinding Lights">Blinding Lights</button>
-      <button class="chip" type="button" aria-pressed="false" data-v="Starboy">Starboy</button>
-      <button class="chip" type="button" aria-pressed="false" data-v="Save Your Tears">Save Your Tears</button>
-      <button class="chip" type="button" aria-pressed="false" data-v="Die For You">Die For You</button>
-      <button class="chip" type="button" aria-pressed="false" data-v="другая, расскажу при встрече">Другая</button>
-    </div>
+    <p>Ты расскажешь, как прошла поездка и концерт, а я послушаю. Выбери, как тебе удобнее.</p>
 
     <p class="group-label">Когда</p>
     <div class="chips" data-group="day">
@@ -227,14 +227,13 @@ footer strong { color: var(--ink); }
   var CONTACT_INSTAGRAM = "";  // for example "ruslan.username"
   var HIS_NAME = "Руслан";
 
-  var state = { song: "Blinding Lights", day: "в эту субботу", place: "выпьем кофе" };
+  var state = { day: "в эту субботу", place: "выпьем кофе" };
   var draftEl = document.getElementById("draft");
   var statusEl = document.getElementById("status");
   var sendEl = document.getElementById("send");
 
   function message() {
-    return "Привет, " + HIS_NAME + "! Я посмотрела твою страницу. Песня, которая зацепила меня на концерте: " +
-      state.song + ". Давай " + state.place + " " + state.day + ".";
+    return "Привет, " + HIS_NAME + "! Я посмотрела твою страницу. Давай " + state.place + " " + state.day + ".";
   }
   function laterMessage() {
     return "Привет, " + HIS_NAME + "! Спасибо, мне приятно. Давай чуть позже вернёмся к этому разговору.";
