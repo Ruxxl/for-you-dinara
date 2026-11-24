@@ -131,7 +131,25 @@ footer strong { color: var(--ink); }
   .hero > *:nth-child(3) { animation-delay: 0.24s; }
   @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 }
+
+/* sound gate */
+.gate { position: fixed; inset: 0; z-index: 50; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; text-align: center;
+  padding: 24px max(16px, env(safe-area-inset-right, 0px)) 24px max(16px, env(safe-area-inset-left, 0px));
+  background: radial-gradient(90% 70% at 50% 30%, var(--red-deep), var(--ground) 75%); transition: opacity 0.6s; }
+.gate[hidden] { display: none; }
+.gate.out { opacity: 0; pointer-events: none; }
+.gate h2 { margin: 0; font-size: clamp(30px, 8vw, 52px); }
+.gate p { margin: 0; color: var(--ink-soft); max-width: 34ch; }
+.sound { position: fixed; z-index: 40; right: max(16px, env(safe-area-inset-right, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px)); min-width: 48px; padding-inline: 18px; }
 </style>
+
+<div class="gate" id="gate">
+  <h2>Включи звук</h2>
+  <p>Для тебя есть музыка. Сделай погромче и нажми кнопку.</p>
+  <button class="btn primary" id="enter" type="button">Войти</button>
+</div>
+<button class="btn quiet sound" id="sound" type="button" aria-pressed="true" hidden>Звук: вкл</button>
+<audio id="bgm" src="die-for-you.m4a" loop preload="auto"></audio>
 
 <div class="wrap">
   <header class="hero">
@@ -267,7 +285,34 @@ footer strong { color: var(--ink); }
     document.documentElement.style.setProperty("--my", e.clientY + "px");
   }, { passive: true });
 
+  var bgm = document.getElementById("bgm"), gate = document.getElementById("gate"), soundBtn = document.getElementById("sound");
+  var fadeTimer = null;
+  function fadeTo(v) {
+    clearInterval(fadeTimer);
+    fadeTimer = setInterval(function () {
+      var d = v - bgm.volume;
+      if (Math.abs(d) < 0.03) { bgm.volume = v; clearInterval(fadeTimer); return; }
+      bgm.volume = Math.max(0, Math.min(1, bgm.volume + (d > 0 ? 0.03 : -0.03)));
+    }, 60);
+  }
+  document.getElementById("enter").addEventListener("click", function () {
+    bgm.muted = false; bgm.volume = 0;
+    var pr = bgm.play();
+    if (pr && pr.then) pr.then(function () { fadeTo(0.7); }, function () { soundBtn.textContent = "Звук: выкл"; soundBtn.setAttribute("aria-pressed", "false"); });
+    gate.classList.add("out");
+    setTimeout(function () { gate.hidden = true; }, 650);
+    soundBtn.hidden = false;
+  });
+  soundBtn.addEventListener("click", function () {
+    var on = bgm.paused || bgm.muted;
+    if (on) { bgm.muted = false; bgm.play().then(function () { fadeTo(0.7); }, function () {}); }
+    else { bgm.pause(); }
+    soundBtn.textContent = on ? "Звук: вкл" : "Звук: выкл";
+    soundBtn.setAttribute("aria-pressed", on ? "true" : "false");
+  });
+
   render();
+
 </script>
 
 </html>
